@@ -1,0 +1,68 @@
+.navigation-container {
+    width: 100%;
+    min-height: 85px;
+}
+
+.floating-ads {
+    width: 100%;
+    min-height: calc(85px - 61px);
+    background-color: red;
+    color: white;
+    text-transform: uppercase;
+
+    position: relative;
+    direction: left;
+    /* behavior: alternative; */
+}
+
+.navigation-header {
+    width: 100%;
+    min-height: 61px;
+    padding: 2.5px 5.5px;
+    box-sizing: border-box;
+    /* background-color: var(--whiteColor); */
+    /* border-bottom: 1px solid var(--blackColor); */
+    box-shadow: 0px 0px 5px lightblue;
+}
+
+.navigation-login {
+    min-width: 70px;
+    min-height: 50px;
+
+    padding: 10px; 
+    box-sizing: border-box;
+    border: 0px solid #00000065;
+    border-radius: 25px;
+    background-color: #b39d9d7a;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navigation-header-left {
+    display: none;
+    float: left;
+
+    position: relative;
+    top: 50%;
+    transform: 50%;
+}
+
+.navigation-header-right {
+    /* width: 100%; */
+    height: 100%;
+    float: right;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+    .navigation-header-left {
+        display: inline-block;
+    }
+}

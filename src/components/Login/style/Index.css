@@ -1,0 +1,21 @@
+.login-modal-header {
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    background-image: linear-gradient(#FFECD2, #FCB69F);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: larger;
+    font-weight: 900;
+    color: var(--blackColor);
+}
+.login-modal-body {
+    width: 100%;
+    height: calc(100% - 50px);
+    background-image: linear-gradient(#FDFCFB, #E2D1C3);
+}

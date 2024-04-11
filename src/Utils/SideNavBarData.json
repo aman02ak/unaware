@@ -1,0 +1,19 @@
+{
+    "ITEMS": [
+        {
+            "ITEM_ID": 1,
+            "ITEM_NAME": "Profile",
+            "NAVIGATE_TO": "profile"
+        },
+        {
+            "ITEM_ID": 2,
+            "ITEM_NAME": "Blog",
+            "NAVIGATE_TO": "blog"
+        },
+        {
+            "ITEM_ID": 3,
+            "ITEM_NAME": "About",
+            "NAVIGATE_TO": "about"
+        }
+    ]
+}
