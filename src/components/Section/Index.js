@@ -41,6 +41,16 @@ function Index({
             case "Report Bug":
                 alert('Service Under Development / Maintainance');
                 break;
+            case "Enroll Course":
+                // if logged in navigate to that path
+                if(user?.loggedIn)
+                    alert('Service Under Development / Maintainance');
+                else{
+                    // give alert as user is not logged in
+                    alert("User not logged in.");
+                    handleOpenLogIn();
+                }
+                break;
         }
     };
 
@@ -64,7 +74,8 @@ function Index({
             <img 
                 src={`/company_logo.png`} 
                 alt={`Company Name`}
-                onClick={() => navigate('/')}    
+                onClick={() => navigate('/')}
+                className='clickable'
             ></img>
         </div>
         <div className='side-navigator-content'>
@@ -89,7 +100,15 @@ function Index({
                 variant="contained"
                 className='clickable'
                 style={{ background: '#ee4b2b' }}
+                onClick={() => handleClickFromFixedComponet('Enroll Course')}
+                // disabled={true}
+            >Enroll Course</Button>
+            <Button 
+                variant="contained"
+                className='clickable'
+                style={{ background: '#ee4b2b' }}
                 onClick={() => handleClickFromFixedComponet('Report Bug')}
+                // disabled={true}
             >Report Bug</Button>
         </div>
     </div>

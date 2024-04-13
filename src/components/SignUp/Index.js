@@ -12,8 +12,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 
-import SignUpIndex from '../SignUp/Index';
-
 const style = {
   position: 'absolute',
   top: '50%',
@@ -24,18 +22,23 @@ const style = {
   borderRadius: '15px',
   boxShadow: 24,
   width: '400px',
-  height: '450px'
+  height: '600px'
 };
 
-function LogInIndex({
+function SignUpIndex({
     open,
     handleClose
 }) {
   // variable declaration and initialization
   const [publicInformation, setPublicInformation] = useState(undefined);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isSignUpFormOpen, setIsSignUpFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    username: '',
+    fullname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    isConfirmPasswordMatching: true
+  });
   
   // as use-effects
   useEffect(() => {
@@ -76,30 +79,53 @@ function LogInIndex({
   const handleUpdateForm = (fieldName, event) => {
     switch(fieldName) {
       case "USERNAME":
-        setUsername(event.target.value);
+        setFormData(prevState => ({ ...prevState, username: event.target.value }));
+        break;
+      case "FULL_NAME":
+        setFormData(prevState => ({ ...prevState, fullname: event.target.value }));
+        break;
+      case "EMAIL":
+        setFormData(prevState => ({ ...prevState, email: event.target.value }));
         break;
       case "PASSWORD":
-        setPassword(event.target.value);
+        setFormData(prevState => ({ ...prevState, password: event.target.value }));
+        if(event.target.value.length === 0 || formData.confirmPassword === event.target.value)
+          setFormData(prevState => ({ ...prevState, isConfirmPasswordMatching: true }));
+        else
+          setFormData(prevState => ({ 
+            ...prevState, 
+            isConfirmPasswordMatching: (formData.confirmPassword === event.target.value) 
+          }));
+        break;
+      case "CONFIRM_PASSWORD":
+        setFormData(prevState => ({ ...prevState, confirmPassword: event.target.value }));
+        if(event.target.value.length === 0)
+          setFormData(prevState => ({ ...prevState, isConfirmPasswordMatching: true }));
+        else
+          setFormData(prevState => ({ 
+            ...prevState, 
+            isConfirmPasswordMatching: (formData.password === event.target.value) 
+          }));
         break;
     }
   }
   const clearForm = () => {
-    setUsername('');
-    setPassword('');
+    setFormData({
+      username: '',
+      fullname: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      isConfirmPasswordMatching: true
+    });
   }
-  const handleLoginSubmit = () => {
+  const handleSignupSubmit = () => {
     alert('Service Under developement / maintainance');
     clearForm();
   }
-  const handleForgotPassword = (username) => {
-    alert('Service Under developement / maintainance');
-  }
-  const handleSignUp = () => {
-    // alert('Service Under developement / maintainance');
-    handleSignUpToggle();
-  }
-  const handleSignUpToggle = () => {
-    setIsSignUpFormOpen(!isSignUpFormOpen);
+  const handleSignIn = () => {
+    clearForm();
+    handleClose();
   }
 
   return (
@@ -117,17 +143,9 @@ function LogInIndex({
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>  
-            {
-              isSignUpFormOpen ? 
-                <SignUpIndex 
-                  open={isSignUpFormOpen}
-                  handleClose={handleSignUpToggle}
-                />
-              :null
-            }          
+          <Box sx={style}>
             <header className='login-modal-header'>
-                <span>Login</span>
+                <span>Signup</span>
                 <CancelIcon 
                     className='clickable'
                     onClick={handleCloseClicked}
@@ -135,7 +153,8 @@ function LogInIndex({
             </header>
             <div className='login-modal-body'>
                 <div className='modal-body-header'>
-                  <span className='body-header-message-text'>Welcome back to</span>
+                  <span className='body-header-message-text'>Ready to Begin</span>
+                  <span className='body-header-message-text'>Your Journey with</span>
                   <span className='body-header-org-name-text text-red-600'>{publicInformation?.COMPANY_NAME}</span>
                 </div>
                 <div className='modal-body-signin'>
@@ -144,7 +163,7 @@ function LogInIndex({
                   <div className='body-signin-with-gmail'>
                     <div 
                       className='signin-option-google clickable'
-                      onClick={handleSignInGoogleAccount}  
+                      onClick={handleClose}  
                     >
                       <img 
                         src={`/google_logo.png`}
@@ -155,12 +174,42 @@ function LogInIndex({
                   </div>
                   <div className='body-signin-divider'>
                     <span className='signin-horizontal-line'></span>
-                    <span className='text'>{`Or, sign in with your email`}</span>
+                    <span className='text'>{`Or, sign up with`}</span>
                     <span className='signin-horizontal-line'></span>
                   </div>
 
                   {/* Sigin with form */}
                   <div className='body-signin-with-email-pass'>
+                    <TextField
+                      id="input-with-icon-textfield"
+                      placeholder='Username'
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PersonOutlineIcon />
+                          </InputAdornment>
+                        ),
+                      }}
+                      variant="standard"
+                      value={formData?.username}
+                      onChange={(e) => handleUpdateForm('USERNAME', e)}
+                      inputProps={{ style: { width: '310px', fontFamily: 'Arial', color: 'white'}}}
+                    />
+                    <TextField
+                      id="input-with-icon-textfield"
+                      placeholder='Full Name'
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PersonOutlineIcon />
+                          </InputAdornment>
+                        ),
+                      }}
+                      variant="standard"
+                      value={formData?.fullname}
+                      onChange={(e) => handleUpdateForm('FULL_NAME', e)}
+                      inputProps={{ style: { width: '310px', fontFamily: 'Arial', color: 'white'}}}
+                    />
                     <TextField
                       id="input-with-icon-textfield"
                       placeholder='john@gmail.com'
@@ -172,13 +221,13 @@ function LogInIndex({
                         ),
                       }}
                       variant="standard"
-                      value={username}
-                      onChange={(e) => handleUpdateForm('USERNAME', e)}
+                      value={formData?.email}
+                      onChange={(e) => handleUpdateForm('EMAIL', e)}
                       inputProps={{ style: { width: '310px', fontFamily: 'Arial', color: 'white'}}}
                     />
                     <TextField
                       id="input-with-icon-textfield"
-                      placeholder='********'
+                      placeholder='Password'
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -188,29 +237,44 @@ function LogInIndex({
                       }}
                       type='password'
                       variant="standard"
-                      value={password}
+                      value={formData?.password}
                       onChange={(e) => handleUpdateForm('PASSWORD', e)}
                       inputProps={{ style: { width: '310px', fontFamily: 'Arial', color: 'white'}}}
                     />
-                    <div 
-                      className='body-signin-with-pass-reset text-red-600 clickable'
-                      onClick={handleForgotPassword}
-                    >{`Forgot Password ?`}</div>
+                    <TextField
+                      id="input-with-icon-textfield"
+                      placeholder='Confirm Password'
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <LockOutlinedIcon />
+                          </InputAdornment>
+                        ),
+                      }}
+                      type='password'
+                      variant="standard"
+                      value={formData?.confirmPassword}
+                      onChange={(e) => handleUpdateForm('CONFIRM_PASSWORD', e)}
+                      inputProps={{ style: { width: '310px', fontFamily: 'Arial', color: 'white'}}}
+                    />
+                    <div className='body-signin-with-pass-reset text-red-600 clickable'>
+                      {formData.isConfirmPasswordMatching ? `` : `Password do not match`}
+                    </div>                 
                     <div className='body-signin-with-pass-action-button'>
                       <Button 
                         variant="contained"
-                        onClick={handleLoginSubmit}
+                        onClick={handleSignupSubmit}
                         style={{ width: '343px', background: 'rgb(225 29 72 / 59%)' }}
-                      >Login</Button>
+                      >Verify and Sign up</Button>
                     </div>
                   </div>
                 </div>
                 <div className='modal-body-signup-text'>
-                  <span>{`Don’t you have an account?`}</span>
+                  <span>{`Already have an account?`}</span> 
                   <span 
                     className='text-active-link text-red-600'
-                    onClick={handleSignUp}
-                  >{`${" "}Sign up`}</span>
+                    onClick={handleSignIn}
+                  >{`${" "}Sign in`}</span>
                 </div>
             </div>
             </Box>
@@ -219,4 +283,4 @@ function LogInIndex({
   )
 }
 
-export default LogInIndex
+export default SignUpIndex;
