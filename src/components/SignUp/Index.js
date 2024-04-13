@@ -7,10 +7,15 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TextField from '@mui/material/TextField';
+
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
+import {
+  EmailOutlined
+} from '@mui/icons-material';
 
 const style = {
   position: 'absolute',
@@ -186,7 +191,7 @@ function SignUpIndex({
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonOutlineIcon />
+                            <RecordVoiceOverOutlinedIcon />
                           </InputAdornment>
                         ),
                       }}
@@ -216,7 +221,7 @@ function SignUpIndex({
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonOutlineIcon />
+                            <EmailOutlined />
                           </InputAdornment>
                         ),
                       }}
