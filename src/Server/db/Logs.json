@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "action_type": "CREATE",
+            "message": "User created - kumar.aman at 22-04-2024",
+            "createdAt": "Mon Apr 22 2024 21:21:48 GMT+0530 (India Standard Time)"
+        },
+        {
+            "id": 2,
+            "action_type": "CREATE",
+            "message": "Course created - A-Z DSA at Mon Apr 22 2024 21:21:48 GMT+0530 (India Standard Time)",
+            "createdAt": "Mon Apr 22 2024 21:21:48 GMT+0530 (India Standard Time)"
+        }
+    ]
+}

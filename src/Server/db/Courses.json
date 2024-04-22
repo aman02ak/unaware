@@ -1,0 +1,15 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "course_name": "A-Z DSA",
+            "price": 900,
+            "is_active": true,
+            "count_of_people_enrolled": 0,
+            "authors_id": [1],
+            "sub_topics_id": [1, 2, 3, 4, 5],
+            "createdAt": "Mon Apr 22 2024 21:21:48 GMT+0530 (India Standard Time)",
+            "updatedAt": "Mon Apr 22 2024 21:21:48 GMT+0530 (India Standard Time)"
+        }
+    ]
+}
