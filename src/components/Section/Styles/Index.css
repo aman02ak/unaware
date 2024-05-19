@@ -26,6 +26,8 @@
     width: 100%;
     height: auto;
     padding-left: 50px;
+    box-sizing: border-box;
+    
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -58,5 +60,5 @@
     gap: 5px;
     
     position: relative;
-    bottom: -50%;
+    bottom: -35%;
 }

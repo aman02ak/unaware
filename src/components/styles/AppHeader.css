@@ -1,6 +1,6 @@
-.navigation-container {
+.app-header-container {
     width: 100%;
-    min-height: 85px;
+    /* min-height: 85px; */
 }
 
 .floating-ads {
@@ -15,7 +15,7 @@
     /* behavior: alternative; */
 }
 
-.navigation-header {
+.app-header {
     width: 100%;
     min-height: 61px;
     padding: 2.5px 5.5px;
@@ -23,6 +23,10 @@
     /* background-color: var(--whiteColor); */
     /* border-bottom: 1px solid var(--blackColor); */
     box-shadow: 0px 0px 5px lightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navigation-login {
@@ -41,8 +45,9 @@
     align-items: center;
 }
 
-.navigation-header-left {
-    display: none;
+.app-header-left {
+    /* display: none; */
+    opacity: 0;
     float: left;
 
     position: relative;
@@ -50,7 +55,7 @@
     transform: 50%;
 }
 
-.navigation-header-right {
+.app-header-right {
     /* width: 100%; */
     height: 100%;
     float: right;
@@ -62,7 +67,8 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .navigation-header-left {
-        display: inline-block;
+    .app-header-left {
+        /* display: inline-block; */
+        opacity: 1;
     }
 }

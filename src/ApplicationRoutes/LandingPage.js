@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // import './Style/LandingPage.css';
 
-import ArticleIndex from "../components/Article/Index";
+import ArticleIndex from "../Components/Article/Index";
 import CommonNavigationIndexPage from "../CommonNavigation/Index";
 
 function LandingPage({
@@ -24,7 +24,7 @@ function LandingPage({
   
   return (
     <CommonNavigationIndexPage 
-      articleReactComponent = {<ArticleIndex pageToFetch={pageToFetch}/>}
+      articleReactComponent = {<ArticleIndex isAppBgColorDark={isAppBgColorDark} pageToFetch={pageToFetch}/>}
       isAppBgColorDark = {isAppBgColorDark}
       setIsAppBgColorDark = {setIsAppBgColorDark}
       floatingAds = {floatingAds}

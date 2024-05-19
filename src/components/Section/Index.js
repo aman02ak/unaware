@@ -11,7 +11,8 @@ import LogInIndex from '../Login/Index';
 import { useNavigate } from "react-router-dom";
 
 function Index({
-    user
+    user,
+    hideFloatingNavigation
 }) {
     const navigate = useNavigate();
     let sectionFixedItem = require('../../Utils/SideNavBarData.json');
@@ -20,7 +21,7 @@ function Index({
     const handleCloseLogIn = () => setOpenLogIn(false);
 
 
-    const handleClickFromFixedComponet = (itemName, navigateToPath) => {
+    const handleClickFromFixedComponent = (itemName, navigateToPath) => {
         switch(itemName) {
             case "Profile":
                 // if logged in navigate to that path
@@ -52,6 +53,7 @@ function Index({
                 }
                 break;
         }
+        hideFloatingNavigation();
     };
 
     const getSectionItemIcon = (itemName) => {
@@ -85,7 +87,7 @@ function Index({
                         <div
                             key={objectKey}
                             className='navigator-content-child' 
-                            onClick={() => handleClickFromFixedComponet(object.ITEM_NAME, object.NAVIGATE_TO)}
+                            onClick={() => handleClickFromFixedComponent(object.ITEM_NAME, object.NAVIGATE_TO)}
                         >
                             <span>{getSectionItemIcon(object.ITEM_NAME)}</span>
                             <span className='clickable'>{object.ITEM_NAME}</span>
@@ -100,14 +102,14 @@ function Index({
                 variant="contained"
                 className='clickable'
                 style={{ background: '#ee4b2b' }}
-                onClick={() => handleClickFromFixedComponet('Enroll Course')}
+                onClick={() => handleClickFromFixedComponent('Enroll Course')}
                 // disabled={true}
             >Enroll Course</Button>
             <Button 
                 variant="contained"
                 className='clickable'
                 style={{ background: '#ee4b2b' }}
-                onClick={() => handleClickFromFixedComponet('Report Bug')}
+                onClick={() => handleClickFromFixedComponent('Report Bug')}
                 // disabled={true}
             >Report Bug</Button>
         </div>

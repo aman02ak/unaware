@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import './styles/NavigationBar.css';
+import './styles/AppHeader.css';
 
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
@@ -11,11 +11,12 @@ import LogInIndex from './Login/Index';
 
 import { useNavigate } from "react-router-dom";
 
-function NavigationBar({
+function AppHeader({
     isAppBgColorDark,
     setIsAppBgColorDark,
     floatingAds,
-    user
+    user,
+    toggleFloatingNavigation
 }) {
     const navigate = useNavigate();
     const iconStyle = {
@@ -31,9 +32,12 @@ function NavigationBar({
             handleOpenLogIn();
         else
             navigate(`/profile/${user?.username}`);
-    }
+    };
+    const handleShowNavigation = () => {
+        toggleFloatingNavigation();
+    };
   return (
-    <div className='navigation-container'>
+    <div className='app-header-container'>
         <LogInIndex
             open={openLogIn}
             handleClose={handleCloseLogIn}
@@ -41,11 +45,14 @@ function NavigationBar({
         <marquee className={`floating-ads ${floatingAds.isVisible ? 'boxVisibleOn' : 'boxVisibleOff'}`}>
             {floatingAds.data}
         </marquee>
-        <div className="navigation-header">
-            <span className='navigation-header-left'>
+        <div className="app-header">
+            <span
+                className='app-header-left clickable' 
+                onClick={handleShowNavigation}    
+            >
                 <KeyboardDoubleArrowRightIcon style={iconStyle}/>
             </span>
-            <span className='navigation-header-right'>
+            <span className='app-header-right'>
                 <span
                     onClick={() => {setIsAppBgColorDark(!isAppBgColorDark)}}
                     className='clickable'
@@ -72,4 +79,4 @@ function NavigationBar({
   )
 }
 
-export default NavigationBar
+export default AppHeader;

@@ -24,7 +24,7 @@ body {
 
 
 .boxVisibleOff {
-  display: none;
+  /* display: none; */
   transition: all 0.3s ease-out;
 }
 

@@ -16,6 +16,7 @@ root.render(
       <div>
         <Routes >
             <Route path="/" element={<LandingPage pageToFetch={routeData.LANDING_PAGE}/>} />
+            <Route path="/course/:courseId/" element={<LandingPage pageToFetch={routeData.COURSE_PAGE}/>} />
             <Route path="/profile/:username/" element={<LandingPage pageToFetch={routeData.PROFILE_PAGE}/>} />
             <Route path="/blog" element={<LandingPage pageToFetch={routeData.BLOG_PAGE}/>} />
             <Route path="/about" element={<LandingPage pageToFetch={routeData.ABOUT_PAGE}/>} />
