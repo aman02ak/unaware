@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './Style/Index.css';
 
-import AppHeader from "../Components/AppHeader";
-import SectionIndex from '../Components/Section/Index';
+import AppHeader from "../Component/AppHeader";
+import SectionIndex from '../Component/Section/Index';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';

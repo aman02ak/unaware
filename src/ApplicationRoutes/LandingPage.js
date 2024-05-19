@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // import './Style/LandingPage.css';
 
-import ArticleIndex from "../Components/Article/Index";
+import ArticleIndex from "../Component/Article/Index";
 import CommonNavigationIndexPage from "../CommonNavigation/Index";
 
 function LandingPage({
